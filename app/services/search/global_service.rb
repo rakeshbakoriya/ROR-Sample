@@ -1,23 +1,26 @@
 module Search
-  class AdminUsersService
+  class GlobalService
     attr_reader :errors
 
-    def initialize(params)
+    def initialize(klass, params)
       @search_query = params[:q]
       @order_query = params[:o]
       @direction_query = params[:d]
       @params = params
-      @records = AdminUser.all
+      @records = klass.classify.constantize.all
     end
 
     def execute
       paginate
       order
-
       @records
     end
 
     private
+
+    def load_class_name(klass)
+      
+    end
 
     def paginate
       @records = @records.page(@params[:page])
