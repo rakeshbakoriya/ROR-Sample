@@ -27,6 +27,13 @@
                         = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
                   th
                     .d-flex
+                      .mr-2 = AdminUser.human_attribute_name(:name)
+                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
+                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
+                      - else
+                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
+                  th
+                    .d-flex
                       .mr-2 = AdminUser.human_attribute_name(:email)
                       - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
                         = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
@@ -47,29 +54,14 @@
                       - else
                         = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
                   th
-                    .d-flex
-                      .mr-2 = AdminUser.human_attribute_name(:email)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
-                  th
-                    .d-flex
-                      .mr-2 = AdminUser.human_attribute_name(:name)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
-                  th
               tbody
                 - @admin_users.each do |admin_user|
                   tr
                     td = admin_user.id
+                    td = admin_user.name
                     td = admin_user.email
                     td = admin_user.created_at
                     td = admin_user.updated_at
-                    td = admin_user.email
-                    td = admin_user.name
                     td = link_to t('.show'), dashboard_admin_user_path(admin_user), class: 'btn btn-primary btn-sm'
 
         = paginate @admin_users, views_prefix: 'dashboard'
