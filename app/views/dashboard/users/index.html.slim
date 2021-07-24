@@ -10,7 +10,6 @@
           .col-auto
             = link_to t('.csv'), dashboard_users_path(user: @search_query, format: :csv), class: 'btn btn-info lift ml-3'
 
-
     .row.mt-4
       .col-12
         .card
@@ -21,38 +20,24 @@
                   th
                     .d-flex
                       .mr-2 = User.human_attribute_name(:id)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
                   th
                     .d-flex
                       .mr-2 = User.human_attribute_name(:name)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
                   th
                     .d-flex
                       .mr-2 = User.human_attribute_name(:email)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
                   th
                     .d-flex
                       .mr-2 = User.human_attribute_name(:created_at)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
                   th
                     .d-flex
                       .mr-2 = User.human_attribute_name(:updated_at)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
+                  th
                   th
               tbody
                 - @users.each do |user|
@@ -63,5 +48,6 @@
                     td = user.created_at
                     td = user.updated_at
                     td = link_to t('.show'), dashboard_user_path(user), class: 'btn btn-primary btn-sm'
+                    td = link_to "Books", dashboard_user_books_path(user), class: 'btn btn-primary btn-sm'
 
         = paginate @users, views_prefix: 'dashboard'

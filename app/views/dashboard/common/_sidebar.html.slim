@@ -15,6 +15,10 @@
               = link_to dashboard_users_path,
                 class: "nav-link #{current_page?(dashboard_users_path) ? 'active' : ''}" do
                 .span.ml-2 = User.model_name.human
+            li.nav-item
+              = link_to dashboard_books_path,
+                class: "nav-link #{current_page?(dashboard_books_path) ? 'active' : ''}" do
+                .span.ml-2 = Book.model_name.human
 
       .navbar-user.d-none.d-md-flex
         = link_to 'Sign out', destroy_dashboard_admin_user_session_path,

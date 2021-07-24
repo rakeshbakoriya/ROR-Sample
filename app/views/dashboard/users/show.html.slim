@@ -14,7 +14,11 @@
       .col-12.col-lg-10.col-xl-8
         .card
           .card-header
-            h4.card-header-title = "#{User.model_name.human}"
+            .row.align-items-center
+              .col
+                h4.card-header-title = "#{User.model_name.human}"
+              .col-auto
+                = link_to "Books", dashboard_user_books_path(@user), class: 'btn btn-primary btn-sm'
           .card-body
             .list-group.list-group-flush.my-n3
 
