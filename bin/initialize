@@ -10,3 +10,6 @@ system('bundle exec rails g kaminari:views default bootstrap4 -e slim --views-pr
 system('bundle exec rake initialize_rspec')
 system('bundle exec rubocop -A')
 system('bundle exec rubocop --auto-gen-config')
+
+#Api Rswag creates Swagger tooling for Rails API's. Generate beautiful API documentation
+system('bundle exec rake rswag:specs:swaggerize')
