@@ -28,6 +28,14 @@ Rails.application.routes.draw do
     end
   end
 
+  #API
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :books, only: %w[index]
+      post '/user_books', to: 'books#user_books'
+    end
+  end
+
   get '*path' => redirect('/')
 
   unless Rails.env.development?
