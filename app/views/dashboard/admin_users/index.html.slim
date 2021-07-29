@@ -10,7 +10,6 @@
           .col-auto
             = link_to t('.csv'), dashboard_admin_users_path(admin_user: @search_query, format: :csv), class: 'btn btn-info lift ml-3'
 
-
     .row.mt-4
       .col-12
         .card
@@ -21,55 +20,32 @@
                   th
                     .d-flex
                       .mr-2 = AdminUser.human_attribute_name(:id)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
-                  th
-                    .d-flex
-                      .mr-2 = AdminUser.human_attribute_name(:email)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
-                  th
-                    .d-flex
-                      .mr-2 = AdminUser.human_attribute_name(:created_at)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
-                  th
-                    .d-flex
-                      .mr-2 = AdminUser.human_attribute_name(:updated_at)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
-                  th
-                    .d-flex
-                      .mr-2 = AdminUser.human_attribute_name(:email)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
                   th
                     .d-flex
                       .mr-2 = AdminUser.human_attribute_name(:name)
-                      - if params[:d].present? && params[:d].include?('asc') && params[:o].include?('id')
-                        = link_to '⋀', dashboard_admin_users_path(order_params('id', 'desc'))
-                      - else
-                        = link_to '⋁', dashboard_admin_users_path(order_params('id', 'asc'))
+                      = render 'table_shortable'
+                  th
+                    .d-flex
+                      .mr-2 = AdminUser.human_attribute_name(:email)
+                      = render 'table_shortable'
+                  th
+                    .d-flex
+                      .mr-2 = AdminUser.human_attribute_name(:created_at)
+                      = render 'table_shortable'
+                  th
+                    .d-flex
+                      .mr-2 = AdminUser.human_attribute_name(:updated_at)
+                      = render 'table_shortable'
                   th
               tbody
                 - @admin_users.each do |admin_user|
                   tr
                     td = admin_user.id
+                    td = admin_user.name
                     td = admin_user.email
                     td = admin_user.created_at
                     td = admin_user.updated_at
-                    td = admin_user.email
-                    td = admin_user.name
                     td = link_to t('.show'), dashboard_admin_user_path(admin_user), class: 'btn btn-primary btn-sm'
 
         = paginate @admin_users, views_prefix: 'dashboard'

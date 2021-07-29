@@ -8,7 +8,7 @@
               h6 = t('.heading_sub')
             h1.header-title = AdminUser.model_name.human
           .mx-4.pt-2
-            = render 'breadcrumb', data: [{ text: 'AdminUsers', link: '/dashboard/admin_users' }, { text: 'View AdminUser', link: "/dashboard/admin_users/#{@admin_user.id}" }]
+            = render 'dashboard/common/breadcrumb', data: [{ text: 'AdminUsers', link: '/dashboard/admin_users' }, { text: 'View AdminUser', link: "/dashboard/admin_users/#{@admin_user.id}" }]
 
     .row.justify-content-center
       .col-12.col-lg-10.col-xl-8

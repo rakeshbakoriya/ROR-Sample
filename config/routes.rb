@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     }, skip: %w[registrations]
 
     resources :admin_users, only: %w[index show]
+    resources :books, only: %w[index show] do
+      resources :users, only: %w[index show]
+    end
+    resources :users, only: %w[index show] do
+      resources :books, only: %w[index show]
+    end
   end
 
   get '*path' => redirect('/')

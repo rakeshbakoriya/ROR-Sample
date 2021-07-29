@@ -4,7 +4,7 @@ module Dashboard
     helper_method :order_params
 
     def index
-      service = Search::AdminUsersService.new(params)
+      service = Search::GlobalService.new("admin_user", params)
       @admin_users = service.execute
     end
 
