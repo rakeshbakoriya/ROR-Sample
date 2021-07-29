@@ -4,9 +4,8 @@ module Api
       before_action :set_user, only: :user_books
       before_action :set_book, only: :user_books
 
-
       def index
-        
+        render json: Book.search(params)
       end
 
       def user_books
@@ -29,14 +28,13 @@ module Api
 
       def set_user
         @user = User.find(params[:user_id])
-        render json: { success: false, errors: [{ message: "Couldn't find User with 'ID'=#{params[:user_id]}" }]}, status: :not_found unless @user
+        render json: { success: false, errors: [{ message: ["Couldn't find User with 'ID'=#{params[:user_id]}"] }]}, status: :not_found unless @user
       end
 
       def set_book
         @book = Book.find(params[:book_id])
-        render json: { success: false, errors: [{ message: "Couldn't find Book with 'ID'=#{params[:book_id]}" }] }, status: :not_found unless @book
+        render json: { success: false, errors: [{ message: ["Couldn't find Book with 'ID'=#{params[:book_id]}"] }] }, status: :not_found unless @book
       end
-
     end
 
   end
