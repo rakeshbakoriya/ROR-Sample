@@ -34,6 +34,9 @@ gem 'turbolinks', '~> 5'
 gem 'twilio-ruby'
 gem 'unicorn'
 gem 'webpacker', '~> 4.0'
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
 
 group :development, :test do
   gem 'brakeman'
@@ -43,7 +46,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-stack_explorer'
-  gem 'rspec-rails', '~> 4.0.1'
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
