@@ -4,14 +4,20 @@ require 'capistrano/rails'
 # require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
+# require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'
 # require 'capistrano/nginx'
 # require 'capistrano/yarn'
-# require 'capistrano3/unicorn'
+require 'capistrano3/unicorn'
 require 'capistrano/rvm'
 require 'capistrano/puma'
 require "capistrano/scm/git"
-install_plugin Capistrano::SCM::Git
+# require 'capistrano/rails/collection'
 
-# Load custom tasks from `lib/capistrano/tasks` if you have any defined
-Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+install_plugin Capistrano::SCM::Git
+install_plugin Capistrano::Puma
+# install_plugin Capistrano::Puma::Nginx
+
+
+
+
