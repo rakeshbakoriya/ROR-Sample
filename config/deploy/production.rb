@@ -10,7 +10,7 @@ set :rvm_ruby_version, '3.0.0@iruuza'
 set :default_shell, :bash
 
 set :bundle_path, -> { nil }
-set :bundle_jobs, 1
+set :bundle_jobs, 4
 
 set :puma_threads, [0, 4]
 set :puma_workers, 1
