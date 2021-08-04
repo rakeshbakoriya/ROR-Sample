@@ -38,6 +38,8 @@ gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
 gem 'rspec-rails'
+gem 'rswag-specs'
+gem 'listen', '~> 3.4.1'
 
 group :development, :test do
   gem 'brakeman'
@@ -47,7 +49,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-stack_explorer'
-  gem 'rswag-specs'
 end
 
 group :development do
@@ -62,7 +63,6 @@ group :development do
   gem 'capistrano-faster-assets'
   gem 'capistrano-rails-collection'
   gem 'letter_opener'
-  gem 'listen', '~> 3.4.1'
   gem 'rails-erd'
   gem 'rubocop'
   gem 'rubocop-rails', require: false
